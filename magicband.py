@@ -22,16 +22,6 @@ import configparser
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 import pygame
 
-# print band ids when read  set to True to see band ids on command line
-#print_band_id = False
-
-# Reverse the circle lights direction
-#reverse_circle = True
-
-# The number of NeoPixels
-#ring_pixels = 50 
-#mickey_pixels = 40 
-
 config = configparser.ConfigParser()
 config.read('settings.conf')
 print_band_id = bool(config.get('Settings', 'print_band_id'))
@@ -39,48 +29,13 @@ reverse_circle = bool(config.get('Settings', 'reverse_circle'))
 ring_pixels = int(config.get('Settings', 'ring_pixels'))
 mickey_pixels = int(config.get('Settings', 'mickey_pixels'))
 
-#COLOR_GREEN = (255,0,0) 
-#COLOR_RED   = (0,255,0)
-#COLOR_BLUE  = (0,0,255)
-#COLOR_WHITE = (255,255,255)
-#COLOR_PURPLE = (0,153,153)
 COLOR_GREEN = eval(config.get('Settings', 'COLOR_GREEN'))
 COLOR_RED = eval(config.get('Settings', 'COLOR_RED'))
 COLOR_BLUE = eval(config.get('Settings', 'COLOR_BLUE'))
 COLOR_WHITE = eval(config.get('Settings', 'COLOR_WHITE'))
 COLOR_PURPLE = eval(config.get('Settings', 'COLOR_PURPLE'))
 
-# Sequence Definitions
-#
-sequences = { 
-          'any1' : { 'color_ring' : COLOR_GREEN,
-                    'color_mouse': COLOR_GREEN,
-                    'spin_sound' : '',
-                    'hold_seconds': 1.5,
-                    'sound' : 'magicband_fastpass.mp3'},
-
-          'any2' : { 'color_ring' : COLOR_BLUE,
-                    'color_mouse': COLOR_BLUE,
-                    'spin_sound' : 'ring_sound.wav',
-                    'hold_seconds': 1.5,
-                    'sound' : 'magicband_fastpass.mp3'},
-
-           # fastpass sound
-           '044d63b27c5c80': { 'color_ring' : COLOR_GREEN,
-                               'color_mouse': COLOR_GREEN,
-                               'spin_sound' :'',
-                               'hold_seconds': 1.5,
-                               'sound' : 'magicband_fastpass.mp3'},
-         
-           # dvc welcome home
-           '044d63b27c5c80': { 'color_ring' : COLOR_PURPLE,
-                               'color_mouse': COLOR_PURPLE,
-                               'spin_sound' : 'ring_sound.wav',
-                               'hold_seconds': 1.5,
-                               'sound' : 'justhome.wav'}
-}
-
-
+sequences = eval(config.get('Settings', 'sequences'))
 
 # GPIO Pin (Recommend GPIO18)
 pixel_pin = board.D18
