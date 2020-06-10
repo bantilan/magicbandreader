@@ -34,10 +34,10 @@ import pygame
 
 config = configparser.ConfigParser()
 config.read('settings.conf')
-print_band_id = config.get('Settings', 'print_band_id')
-reverse_circle = config.get('Settings', 'reverse_circle')
-ring_pixels = config.get('Settings', 'ring_pixels')
-mickey_pixels = config.get('Settings', 'mickey_pixels')
+print_band_id = bool(config.get('Settings', 'print_band_id'))
+reverse_circle = bool(config.get('Settings', 'reverse_circle'))
+ring_pixels = int(config.get('Settings', 'ring_pixels'))
+mickey_pixels = int(config.get('Settings', 'mickey_pixels'))
 
 #COLOR_GREEN = (255,0,0) 
 #COLOR_RED   = (0,255,0)
